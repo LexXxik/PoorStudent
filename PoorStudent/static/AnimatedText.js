@@ -57,3 +57,6 @@ window.onload = function () {
     document.body.appendChild(css);
 };
 
+$('.modal').on('shown.bs.modal', function () {
+    $(this).find('[autofocus]').focus();
+});
