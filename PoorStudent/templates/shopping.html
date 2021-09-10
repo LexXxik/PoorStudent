@@ -4,6 +4,8 @@
 
 
 <link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+<script type="application/javascript"
+        src="{{ url_for('static', filename='js/listing.js') }}"></script>
 {% endblock %}
 
 
@@ -27,42 +29,46 @@
     <p class="lead"> You can make a grocery shopping list on this website and it tells you where you can fill your cart for the best price.</p>
     <hr class="my-4">
     <p>Start by making your first list!</p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> My list</button>
+    <button id="myList" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> My list</button>
 </div>
-    <!-- This will pop when the button is selected-->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Shopping list</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <div class="input-group">
-                                <button type="button" class="btn-close" aria-label="Close"></button>
-                                <input type="text" class="form-control" placeholder="Item" autofocus autocomplete="off">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cathegory</button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Fruit & Vegetables</a>
-                                        <a class="dropdown-item" href="#">Other</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
 
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-md-12 text-center">
-                        <button id="search" type="button" class="btn btn-primary">Search</button>
-                    </div>
+<!-- This will pop when the button is selected-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Shopping list</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush bbb">
+                    <li class="list-group-item" id="item-0">
+                        <div class="input-group">
+                            <button type="button" class="btn-close" aria-label="Close"></button>
+                            <input type="text" class="form-control" id="quantity" placeholder="Quantity" autocomplete="off">
+                            <input type="text" class="form-control" id="name" placeholder="Item" autocomplete="off">
+                            <div class="dropdown" id="cathegory">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Cathegory
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Fruit and Veg</a></li>
+                                    <li><a class="dropdown-item" href="#">Other</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                    <button id="search" type="button" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript"
-            src="{{ url_for('static', filename='AnimatedText.js') }}"></script>
+</div>
+<script type="application/javascript"
+        src="{{ url_for('static', filename='js/animate.js') }}"></script>
         {% endblock %}

@@ -32,7 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
-    <Content Include="static\AnimatedText.js" />
+    <Content Include="static\js\animate.js" />
     <Content Include="static\css\bootstrap-grid.css" />
     <Content Include="static\css\bootstrap-grid.css.map" />
     <Content Include="static\css\bootstrap-grid.min.css" />
@@ -78,7 +78,8 @@
     <Content Include="static\js\bootstrap.js.map" />
     <Content Include="static\js\bootstrap.min.js" />
     <Content Include="static\js\bootstrap.min.js.map" />
-    <Content Include="static\styles.css" />
+    <Content Include="static\css\styles.css" />
+    <Content Include="static\js\listing.js" />
     <Content Include="templates\layout.html" />
     <Content Include="templates\shopping.html" />
   </ItemGroup>
