@@ -11,11 +11,13 @@ app = Flask(__name__)
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
 
+with open("templates/item.html", "r") as f:
+    html_item = f.read()
 
 @app.route('/')
 def hello():
     """Renders a sample page."""
-    return render_template("shopping.html")
+    return render_template("shopping.html", html_item=html_item)
 
 if __name__ == '__main__':
     import os

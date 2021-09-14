@@ -82,6 +82,7 @@
     <Content Include="static\js\listing.js" />
     <Content Include="templates\layout.html" />
     <Content Include="templates\shopping.html" />
+    <Content Include="templates\item.html" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />

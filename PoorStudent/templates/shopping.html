@@ -42,22 +42,6 @@
             </div>
             <div class="modal-body">
                 <ul class="list-group list-group-flush bbb">
-                    <li class="list-group-item" id="item-0">
-                        <div class="input-group">
-                            <button type="button" class="btn-close" aria-label="Close"></button>
-                            <input type="text" class="form-control" id="quantity" placeholder="Quantity" autocomplete="off">
-                            <input type="text" class="form-control" id="name" placeholder="Item" autocomplete="off">
-                            <div class="dropdown" id="cathegory">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Cathegory
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#">Fruit and Veg</a></li>
-                                    <li><a class="dropdown-item" href="#">Other</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
 
                 </ul>
             </div>
@@ -69,6 +53,11 @@
         </div>
     </div>
 </div>
+<div id="extra">
+</div>
+
+<meta id="my-data" content="{{html_item}}">
+
 <script type="application/javascript"
         src="{{ url_for('static', filename='js/animate.js') }}"></script>
         {% endblock %}
