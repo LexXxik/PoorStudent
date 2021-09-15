@@ -11,6 +11,9 @@ app = Flask(__name__)
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
 
+item_count = 0;
+
+# Reads item.html so it can be injected to the website
 with open("templates/item.html", "r") as f:
     html_item = f.read()
 
@@ -18,6 +21,13 @@ with open("templates/item.html", "r") as f:
 def hello():
     """Renders a sample page."""
     return render_template("shopping.html", html_item=html_item)
+
+@app.route('/getitemcount/<jsdata>')
+def get_javascript_data(jsdata):
+    item_count = jsdata
+    print()
+    print('Number of items in the list is ' + item_count)
+    return jsdata
 
 if __name__ == '__main__':
     import os

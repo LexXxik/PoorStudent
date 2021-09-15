@@ -1,15 +1,10 @@
-
-function quantitySubmit()
+function clearList()
 {
-	if (document.activeElement.id == 'quantity');
+	let items = document.querySelectorAll(".list-group-item");
+	for (let i = 0; i < items.length; i++)
 	{
-		name_field = document.activeElement.parentElement.querySelector('#name');
-		name_field.focus();
+		items[i].remove();
 	}
-}
-
-function closeModal()
-{
 }
 
 function deleteItem()
@@ -19,9 +14,6 @@ function deleteItem()
 		let item = document.activeElement.parentElement.parentElement;
 		let list = item.parentElement;
 		let item_index = parseInt(item.id.slice(5));
-		console.log(item_index);
-		console.log(list);
-
 		if (list.childElementCount != 1)
 		{
 			item.remove();
@@ -35,47 +27,78 @@ function deleteItem()
 	}
 }
 
-function createItem ()
+function changeCathegory()
 {
+	
+}
+
+function createItem() {
 	let list = document.querySelector('.list-group.list-group-flush.bbb');
 	let extra_html = document.querySelector('#extra');
 
 	extra_html.innerHTML = document.querySelector('#my-data').content;
 	let item_html = extra_html.querySelector("#template");
 	list.appendChild(item_html);
-		
+
 	let quantity = item_html.querySelector('#quantity');
 	let name_field = item_html.querySelector('#name');
 	let close_btn = item_html.querySelector('.btn-close');
+	let cathegory_bar = item_html.querySelector('#cathegory');
+
+	quantity.id = 'quantity-' + (list.childElementCount - 1);
+	name_field.id = 'name-' + (list.childElementCount - 1);
+	cathegory_bar.id = 'cathegory-' + (list.childElementCount - 1);
 
 	// Making close button next to an item delete the item
 	close_btn.addEventListener('click', deleteItem);
 
 	// Making focus on name after quantity was entered
-	quantity.addEventListener('keypress', function (e) { if (e.key === 'Enter') { quantitySubmit(); } });
+	quantity.addEventListener('keypress', function (e) {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			if (document.activeElement.id === quantity.id)
+			{
+				let name_fi = document.activeElement.parentElement.querySelector('#name-' + quantity.id.slice(9));
+				console.log(name_fi);
+				name_fi.focus();
+			}
+		}
+	});
 
 	// Making a new item on entering item's name
-	name_field.addEventListener('keypress', function (e) { if (e.key === 'Enter' && name_field.value !== "") { createItem(); } });
+	name_field.addEventListener('keypress', function (e) {
+		if (e.key === 'Enter')
+		{
+			e.preventDefault();
+			if (name_field.value !== "" && document.activeElement.id === name_field.id)
+			{
+				createItem();
+			}
+		}
+	});
 
 	// Indexing item properly in the list
 	item_html.id = "item-" + (list.childElementCount - 1);
+
+	$.get("/getitemcount/" + list.childElementCount);
 	quantity.focus();
 }
 
 function listen ()
 {
-	createItem();
+	document.addEventListener('show.bs.modal', createItem);
+	document.addEventListener('hidden.bs.modal', clearList);
 	document.addEventListener('shown.bs.modal', function () {
 		let list = document.querySelector('.list-group.list-group-flush.bbb');
 		to_focus = list.querySelector('#item-' + (list.childElementCount - 1));
 
-		if (to_focus.querySelector('#quantity').value === "") {
-			to_focus.querySelector('#quantity').focus();
+		if (to_focus.querySelector('#quantity-' + (list.childElementCount - 1)).value === "") {
+			to_focus.querySelector('#quantity-' + (list.childElementCount - 1)).focus();
 		}
-		else if (to_focus.querySelector('#name').value === "") {
-			to_focus.querySelector('#name').focus();
+		else if (to_focus.querySelector('#name-' + (list.childElementCount - 1)).value === "") {
+			to_focus.querySelector('#name-' + (list.childElementCount - 1)).focus();
 		}
 	});
 }
 
-document.addEventListener('DOMContentLoaded', listen)
+document.addEventListener('DOMContentLoaded', listen);
