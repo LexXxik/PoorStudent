@@ -27,9 +27,18 @@ function deleteItem()
 	}
 }
 
-function changeCathegory()
+function changeCathegory(dropdown_option)
 {
-	
+	dropdown_button = dropdown_option.parentElement.parentElement.parentElement.querySelector('.btn.btn-secondary.dropdown-toggle');
+	dropdown_button.value = dropdown_option.innerHTML;
+
+	dropdown_options = dropdown_option.parentElement.parentElement.querySelectorAll('.dropdown-item');
+
+	for (let i = 0; i < dropdown_options.length; i++)
+	{
+		dropdown_options[i].className = 'dropdown-item';
+	}
+	dropdown_option.className += " active";
 }
 
 function createItem() {
@@ -49,6 +58,14 @@ function createItem() {
 	name_field.id = 'name-' + (list.childElementCount - 1);
 	cathegory_bar.id = 'cathegory-' + (list.childElementCount - 1);
 
+
+
+	dropdown_btts = cathegory_bar.parentElement.querySelectorAll('.dropdown-item');
+	for (let i = 0; i < dropdown_btts.length; i++)
+	{
+		dropdown_btts[i].addEventListener('click', function (e) { changeCathegory(this); });
+	}
+
 	// Making close button next to an item delete the item
 	close_btn.addEventListener('click', deleteItem);
 
@@ -59,7 +76,6 @@ function createItem() {
 			if (document.activeElement.id === quantity.id)
 			{
 				let name_fi = document.activeElement.parentElement.querySelector('#name-' + quantity.id.slice(9));
-				console.log(name_fi);
 				name_fi.focus();
 			}
 		}
