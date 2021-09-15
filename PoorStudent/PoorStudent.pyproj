@@ -81,6 +81,7 @@
     <Content Include="static\css\styles.css" />
     <Content Include="static\js\listing.js" />
     <Content Include="templates\layout.html" />
+    <Content Include="templates\results.html" />
     <Content Include="templates\shopping.html" />
     <Content Include="templates\item.html" />
   </ItemGroup>

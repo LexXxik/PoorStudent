@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+<script type="application/javascript"
+        src="{{ url_for('static', filename='js/listing.js') }}"></script>
+{% endblock %}
+
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron">
+    <h1> THIS IS YOUR LIST </h1>
+    {% for item in items %}
+        <ul>
+
+            <li>
+                Quantity: {{item['quantity']}}
+            </li>
+            <li>
+                Name: {{item['name']}}
+            </li>
+
+            <li>
+                Name: {{item['cathegory']}}
+            </li>
+
+        </ul>
+        <br>
+        <br>
+
+    {% endfor %}
+</div>
+{% endblock %}

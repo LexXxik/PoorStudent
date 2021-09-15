@@ -30,12 +30,17 @@
     <hr class="my-4">
     <p>Start by making your first list!</p>
     <button id="myList" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> My list</button>
+        <select id="template" class="form-select form-select-sm template" aria-label=".form-select-sm example">
+            {% for category in categories %}
+            <option value={{category}}>{{ category }}</option>
+            {% endfor %}
+        </select>
 </div>
 
 <!-- This will pop when the button is selected-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <form method="post">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Shopping list</h5>
@@ -43,6 +48,8 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group list-group-flush bbb">
+
+                        <!--Items go HERE-->
 
                     </ul>
                 </div>

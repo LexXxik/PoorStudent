@@ -27,19 +27,6 @@ function deleteItem()
 	}
 }
 
-function changeCathegory(dropdown_option)
-{
-	dropdown_button = dropdown_option.parentElement.parentElement.parentElement.querySelector('.btn.btn-secondary.dropdown-toggle');
-	dropdown_button.value = dropdown_option.innerHTML;
-
-	dropdown_options = dropdown_option.parentElement.parentElement.querySelectorAll('.dropdown-item');
-
-	for (let i = 0; i < dropdown_options.length; i++)
-	{
-		dropdown_options[i].className = 'dropdown-item';
-	}
-	dropdown_option.className += " active";
-}
 
 function createItem() {
 	let list = document.querySelector('.list-group.list-group-flush.bbb');
@@ -47,24 +34,21 @@ function createItem() {
 
 	extra_html.innerHTML = document.querySelector('#my-data').content;
 	let item_html = extra_html.querySelector("#template");
+	item_html.querySelector(".selection").appendChild(document.querySelector(".form-select.form-select-sm.template").cloneNode(true));
 	list.appendChild(item_html);
 
 	let quantity = item_html.querySelector('#quantity');
 	let name_field = item_html.querySelector('#name');
 	let close_btn = item_html.querySelector('.btn-close');
-	let cathegory_bar = item_html.querySelector('#cathegory');
+	let cathegory_bar = item_html.querySelector('.form-select.form-select-sm.template');
 
 	quantity.id = 'quantity-' + (list.childElementCount - 1);
 	name_field.id = 'name-' + (list.childElementCount - 1);
 	cathegory_bar.id = 'cathegory-' + (list.childElementCount - 1);
 
-
-
-	dropdown_btts = cathegory_bar.parentElement.querySelectorAll('.dropdown-item');
-	for (let i = 0; i < dropdown_btts.length; i++)
-	{
-		dropdown_btts[i].addEventListener('click', function (e) { changeCathegory(this); });
-	}
+	quantity.setAttribute("name", quantity.id);
+	name_field.setAttribute("name", name_field.id);
+	cathegory_bar.setAttribute("name", cathegory_bar.id);
 
 	// Making close button next to an item delete the item
 	close_btn.addEventListener('click', deleteItem);
