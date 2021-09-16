@@ -5,6 +5,7 @@ function clearList()
 	{
 		items[i].remove();
 	}
+	$.get("/getitemcount/" + document.querySelector('.list-group.list-group-flush.bbb').childElementCount);
 }
 
 function deleteItem()
@@ -24,6 +25,7 @@ function deleteItem()
 				list.querySelector(query).id = "item-" + i;
 			}
 		}
+		$.get("/getitemcount/" + document.querySelector('.list-group.list-group-flush.bbb').childElementCount);
 	}
 }
 

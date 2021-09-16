@@ -29,6 +29,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
+    <Compile Include="predefined.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="webscrape.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
